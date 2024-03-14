@@ -1,0 +1,216 @@
+:root {
+    --crema: #faf0ca;
+    --blk: #0d3b66;
+    --orange: #f48B5e;
+    --ordark: #f36c33;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.container-fluid h1 {
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav-link {
+    color: #0d3b66c4;
+    border-bottom: 2px solid transparent;
+}
+
+.dropdown-item,
+nav {
+    color: var(--blk);
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--blk);
+    border-bottom: 2px solid var(--blk);
+}
+
+ul i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.paneladmin {
+    right: 0%;
+    cursor: pointer;
+    background: var(--ordark);
+    color: white;
+    animation: entrada .9s ease-in-out;
+}
+
+@keyframes entrada {
+    0% {
+        right: -50%;
+    }
+
+    100% {
+        right: 0%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid h1 {
+        font-size: 30px;
+    }
+
+    .nav-link:hover {
+        color: var(--blk);
+        border-bottom: 2px solid transparent;
+    }
+
+    .productos {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 45% !important;
+    }
+
+    .logo img {
+        width: 35px !important;
+        height: 40px !important;
+    }
+
+    .logo span {
+        font-size: 15px !important;
+    }
+
+    .logo p {
+        font-size: 8px !important;
+    }
+    .divs{
+        width: 100% !important;
+    }
+    .curved{
+        height: 35vh !important;
+    }
+    .curved h1{
+        font-size: 40px !important;
+    }
+    .curved p{
+        font-size: 15px !important;
+    }
+}
+
+.buscado:hover {
+    background: rgba(0, 0, 255, 0.603);
+    color: white;
+}
+
+.curved {
+    position: relative;
+    background: #2c3e50;
+    height: 50vh;
+    border-bottom-left-radius: 50% 15%;
+    border-bottom-right-radius: 50% 15%;
+}
+.curved h1{
+    animation: entrada 1s ease-in-out;
+}
+
+
+@keyframes entrada{
+    0%{
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.sticky-element {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.categorias img:hover{
+    scale: 1.1;
+}
+.infor{
+    color: var(--blk);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.infor h1{
+    font-weight: 900;
+}
+.descuento{
+    width: 20% !important;
+    font-size: 20px;
+    font-weight: 700;
+    height: 4vh;
+    background: rgb(255, 0, 0);
+}
+.precio{
+    width: 35%;
+    font-size: 18px;
+    font-weight: 700;
+    background: rgb(2, 253, 23);
+}
+.precio2{
+    width: 35%;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    background: red;
+}
+.precio2 span{
+    font-size: 15px;
+}
+.precio span{
+    font-size: 15px;
+}
+.enlase1{
+    background: orangered;
+    height: 5vh;
+    font-weight: 800;
+}
+a{
+    cursor: pointer;
+}
+.enlase2{
+    background: rgb(23, 23, 252);
+    height: 5vh;
+    font-weight: 800;
+}
+.enlase3{
+    background: rgb(2, 207, 2);
+    height: 5vh;
+    font-weight: 800;
+}
+footer{
+    height: 20vh;
+}
+@media (max-width: 768px) {
+    .categorias{
+        gap: 10px !important;
+        overflow-x: auto !important;
+    }
+    .categorias img{
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .categorias span{
+        font-size: 10px !important;
+    }
+    .pro{
+        width: 100% !important;
+    }
+    .card-uniforme{
+        width: 49% !important;
+        font-size: 10px !important;
+    }
+    .card-uniforme img{
+        height: 20vh !important;
+    }
+    .info-envio{
+        width: 100% !important;
+        height: 15vh !important;
+    }
+}
