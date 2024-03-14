@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function loginIndex(){
-        return view('auth.login');
+        return view('Auth.Login');
     }
     public function loginStore(Request $request){
         $this->validate($request,[
@@ -25,7 +25,7 @@ class AuthController extends Controller
     }
 
     public function registroIndex(){
-        return view('auth.registro');
+        return view('Auth.Registro');
     }
 
     public function registroStore(Request $request){
