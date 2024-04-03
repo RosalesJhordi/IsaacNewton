@@ -17,11 +17,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/inicioMedia.css') }}">
+    <script src="{{ asset('js/Contador.js') }}"></script>
 </head>
 
 <body class="position-relative w-100 h-100">
-    <nav class="navbar sticky-element navbar-expand-lg shadow-sm navbar-light bg-light py-0 px-2 px-md-5">
+    <nav class="navbar sticky-element py-2 py-md-0 navbar-expand-lg shadow-sm navbar-light bg-light py-0 px-2 px-md-5">
         <div class="container-fluid">
 
             <div class="d-flex justify-content-center logo align-items-center py-1">
@@ -39,6 +41,9 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="d-flex d-md-none">
+                    @livewire('carrito')
+                </div>
                 <button class="btn fs-5 d-flex d-md-none" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                     <i class="fa-solid fa-user"></i>
@@ -55,8 +60,11 @@
                             Categorias
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Formales</a></li>
-                            <li><a class="dropdown-item" href="#">Deportivos</a></li>
+                            <li><a class="dropdown-item" href="{{ route('Categorias', 'Formal') }}">Formales</a></li>
+                            <li><a class="dropdown-item" href="{{ route('Categorias', 'Deportivo') }}">Deportivos</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('Categorias', 'Descuento') }}">Descuentos</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -65,7 +73,18 @@
                     </li>
                 </ul>
                 @auth
-                    @livewire('buscador')
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="w-100">
+                            @livewire('buscador')
+                        </div>
+                        <div class="d-none d-md-flex">
+                            @livewire('carrito')
+                        </div>
+                        <button class="btn fs-5 d-none d-md-flex" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <i class="fa-solid fa-user"></i>
+                        </button>
+                    </div>
                 @else
                     <div class="d-flex justify-content-evenly justify-content-md-center align-items-center gap-2">
                         <a href="{{ route('Login') }}" class="nav-link">Iniciar sesion</a>
@@ -79,7 +98,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             @auth
-                <h5 id="offcanvasRightLabel">Hola: {{ auth()->user()->nombres }}</h5>
+                <h5 id="offcanvasRightLabel">Hola: {{ auth()->user()->nombres }} {{ auth()->user()->apellidos }}</h5>
             @else
                 <h1>
                     I<span class="text-primary ">N</span>
@@ -89,10 +108,11 @@
         </div>
         <div class="offcanvas-body">
             @auth
-                <h1>{{ auth()->user()->nombres }}</h1>
-                <h1>{{ auth()->user()->apellidos }}</h1>
-                <h1>{{ auth()->user()->telefono }}</h1>
-                <a href="{{ route('LogOut') }}" class="btn bg-primary text-white fw-bold">Cerrar sesion</a>
+            <img src="{{ asset('img/escudo.png') }}" alt="" class="w-100" style="height: 40vh;">
+                <h1 class="fs-4 mt-4 text-dark-emphasis">{{ auth()->user()->nombres }}</h1>
+                <h1 class="fs-4 text-dark-emphasis">{{ auth()->user()->apellidos }}</h1>
+                <h1 class="fs-4 text-dark-emphasis">{{ auth()->user()->telefono }}</h1>
+                <a href="{{ route('LogOut') }}" class="btn mt-5 w-100 bg-primary text-white fw-bold">Cerrar sesion</a>
             @else
                 <div class="d-flex justify-content-center align-items-center gap-2">
                     <a href="{{ route('Login') }}" class="nav-link">Iniciar sesion</a>
@@ -102,13 +122,40 @@
             @endauth
         </div>
     </div>
+    @if (trim($__env->yieldContent('titulo')) != 'Carrito')
     <section class="curved w-100 d-flex justify-content-center align-items-center px-6">
         <div class="text-white w-50 px-5 divs">
             <h1 class="display-1 fw-bold text-uppercase text-center">Isaac Newton</h1>
             <p class="text-uppercase text-info fs-6 fw-semibold text-center">''Educando para el futuro''</p>
         </div>
     </section>
-    <main class="px-2 px-md-5 position-relative">
+    <main class="px-2 px-md-5 d-flex justify-content-center align-items-center flex-column">
+            <h1 class="text-center mt-2 py-2 fs-2 text-uppercase">Vistiendo la excelencia... <br> un uniforme, una
+                identidad.
+            </h1>
+            <div class="w-75 div-container d-flex flex-column flex-md-row justify-content-center gap-3 py-2 py-md-4 ">
+                <div class="w-50 div-envio rounded-2 px-5 py-2 bg-primary shadow d-flex justify-content-center info-envio align-items-center gap-4"
+                    style="height: 20vh;">
+                    <div class="p-3 bg-white rounded-circle">
+                        <i class="fa-solid fa-truck fs-4"></i>
+                    </div>
+                    <div class="text-white">
+                        <span class="fs-4 fw-bold">Envio Gratis</span>
+                        <p class="fs-6 fw-semibold">Gratis en pedidos superiores a S/. 50</p>
+                    </div>
+                </div>
+                <div class="w-50 div-horas rounded-2 px-5 py-2 bg-warning shadow d-flex mt-2 mt-md-0 justify-content-center info-envio align-items-center gap-4"
+                    style="height: 20vh;">
+                    <div class="p-3 bg-white rounded-circle">
+                        <i class="fs-4 fa-solid fa-clock"></i>
+                    </div>
+                    <div class="text-white">
+                        <span class="fs-4 fw-bold">Tiempo de Entrega</span>
+                        <p class="fs-6 fw-semibold">Tiempo estimado de entrega 24 Horas</p>
+                    </div>
+                </div>
+            </div>
+        @endif
         @yield('contenido')
     </main>
     @auth
@@ -120,9 +167,10 @@
             </a>
         @endif
     @endauth
-    <footer class="w-100 mt-5 bg-dark-subtle gap-4 d-flex justify-content-center align-items-center">
-        <div class="border-end border-2 border-black h-50 px-2 ">informacion</div>
-        <div class="border-end border-2 border-black h-50 px-2 text-center">informacion</div>
+    @if (trim($__env->yieldContent('titulo')) != 'Carrito')
+        
+    
+    <footer class="w-100 mt-5 bg-dark-subtle gap-4 d-flex flex-column justify-content-center align-items-center">
         <div class="d-flex justify-content-center logo align-items-center py-1">
             <img src="{{ asset('img/escudo.png') }}" class="py-2 px-2" alt=""
                 style="width: 50px; height: 55px;">
@@ -131,7 +179,9 @@
                 <p class="text-uppercase mb-0" style="font-size: 10px;">Educando para el futuro</p>
             </div>
         </div>
+        <p class="fw-bold text-dark-emphasis">created by prince of darkness</p>
     </footer>
+    @endif
 </body>
 </body>
 

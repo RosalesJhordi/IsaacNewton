@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Uniformes;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -11,50 +12,47 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $user = User::find(1);
+        $pedidos = $user->unreadNotifications;
         $datos = Uniformes::all();
-        return view('Admin.Inicio', compact('datos'));
+        return view('Admin.Inicio', compact('datos','pedidos'));
     }
-
-    public function store(Request $request)
+    public function datos(Request $request)
     {
-        $imagen = $request->file('file');
+
+        $imagen = $request->file('imagen');
 
         $nomImage = Str::uuid() . "." . $imagen->extension();
         $imgServe = Image::make($imagen);
-        // $imgServe->fit(1000,1000);
 
         $imgPath = public_path('ServidorImagenes') . '/' . $nomImage;
         $imgServe->save($imgPath);
 
-        return response()->json(['imagen' => $nomImage]);
-    }
-
-    public function datos(Request $request)
-    {
         $nombre = $request->nombre;
+        $talla = implode(',', $request->tallas);
 
-        if ($nombre == "Pantalon" || $nombre == "Polo con cuello V" || $nombre == "Gorro plomo"  || $nombre == "Polera" || $nombre == "Medias") {
+        if ($nombre == "Camisa" || $nombre == "Polo con cuello V" || $nombre == "Pullover" || $nombre == "Pantalón"  || $nombre == "Casaca" || $nombre == "Medias" || $nombre == "Blusa") {
             Uniformes::create([
                 'nombre' => $request->nombre,
                 'cantidad' => $request->cantidad,
-                'tallas' => $request->tallas,
+                'tallas' => $talla,
                 'precio' => $request->precio,
                 'descuento' => $request->descuento,
                 'tipo' => "Formal",
-                'imagen' => $request->imagen,
+                'imagen' => $nomImage,
             ]);
         } else {
             Uniformes::create([
                 'nombre' => $request->nombre,
                 'cantidad' => $request->cantidad,
-                'tallas' => $request->tallas,
+                'tallas' => $talla,
                 'precio' => $request->precio,
                 'descuento' => $request->descuento,
                 'tipo' => "Deportivo",
-                'imagen' => $request->imagen,
+                'imagen' => $nomImage,
             ]);
         }
 
-        return back()->with('mensaje','Producto agregado exitosamnete');
+        return back()->with('mensaje', 'Producto agregado exitosamnete');
     }
 }

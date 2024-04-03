@@ -12,7 +12,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
-    @vite('resources/css/Login.css')
+    <link rel="stylesheet" href="{{ asset('css/Login.css') }}">
     <style>
         label{
             font-size: 15px;
@@ -21,13 +21,16 @@
             justify-content: center;
             align-items: center;
         }
+        body {
+            background-image: url('{{ asset('img/lake-192979_1280.jpg') }}');
+        }
     </style>
 </head>
 
 <body>
     <main class="w-100 d-flex justify-content-center  align-items-center" style="height: 100vh; width: 100%;">
         <form action="{{ route('Registro.store') }}" method="POST" novalidate 
-            class="card d-flex flex-column gap-3 justify-content-center align-items-center py-5 shadow needs-validation">
+            class="card d-flex flex-column gap-3 justify-content-center align-items-center py-5 shadow needs-validation" style="background-color: rgba(255, 255, 255, 0.877);">
             @csrf
             <h1 class="pb-3 ">Bienvenido Registrate</h1>
             <div
@@ -124,7 +127,7 @@
             <button class="btn bg-primary text-white px-5 mt-5 ">
                 Registrarse
             </button>
-            <a href="{{ route('Login') }}">Iniciar sesion</a>
+            <p class="d-flex fw-semibold gap-2">¿Ya tienes una cuenta? <a class="nav-link text-primary" href="{{ route('Login') }}"> Iniciar sesion</a></p>
         </form>
     </main>
 

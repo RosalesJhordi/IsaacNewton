@@ -1,0 +1,106 @@
+:root {
+    --crema: #faf0ca;
+    --blk: #0d3b66;
+    --orange: #f48B5e;
+    --ordark: #f36c33;
+}
+body{
+    font-family: "Poppins", sans-serif;
+}
+aside{
+    background: var(--blk);
+    width: 15%;
+    height: 100vh;
+}
+aside h1{
+    color: red;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.nav-item{
+    padding: .5rem;
+}
+.nav-item:hover{
+    background-color: var(--ordark);
+    border-radius: 0px 200px 200px 10px;
+    color: white;
+}
+
+.nav-item.active{
+    background-color: var(--ordark);
+    border-radius: 0px 200px 200px 10px;
+    color: white;
+}
+.nav-link{
+    font-weight: 600;
+    color: white;
+}
+.nav-link:hover{
+    color:
+    white;
+}
+main{
+    width: 85%;
+}
+.dvs1,.dvs2,.dvs3,.dvs4{
+    width: 20%;
+    height: 15vh;
+    font-weight: 800;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.dvs2{
+    background: rgba(1, 219, 12, 0.911);
+}
+.dvs4{
+    background: var(--ordark);
+}
+.dvs4 button{
+    font-weight: 800;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.dvs4:hover{
+    background: var(--ordark);
+    color: white;
+}
+.card{
+    width: 20%;
+}
+.modal-content{
+    height: 60vh;
+}
+.opspanel {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.descuento{
+    width: 20% !important;
+    font-size: 20px;
+    font-weight: 700;
+    height: 4vh;
+    background: rgb(255, 0, 0);
+}
+.precio{
+    width: 35%;
+    font-size: 18px;
+    font-weight: 700;
+    background: rgb(2, 253, 23);
+}
+.precio2{
+    width: 35%;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    background: red;
+}
+.precio2 span{
+    font-size: 15px;
+}
+.precio span{
+    font-size: 15px;
+}

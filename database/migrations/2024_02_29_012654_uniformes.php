@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->integer('cantidad');
-            $table->string('tallas');
+            $table->text('tallas')->nullable();
             $table->double('precio');
             // $table->string('genero');
-            $table->double('descuento');
+            $table->double('descuento')->nullable();
             $table->string('tipo');
             $table->string('imagen');
             $table->rememberToken();

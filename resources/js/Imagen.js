@@ -4,10 +4,10 @@ Dropzone.autoDiscover = false;
 
 const dropzone = new Dropzone("#dropzone", {
     dictDefaultMessage: "Arrastre o selecione imagen aqui",
-    acceptedFiles: ".png,.jpg,.jpeg,.gif,.bmp,.tiff,.WebP",
+    acceptedFiles: ".png,.jpg,.jpeg,.gif,.bmp,.tiff,.WebP,.webp",
     addRemoveLinks: true,
     dictRemoveFile: "Borrar archivo",
-    maxFiles: 1,
+    maxFiles: 500,
     uploadMultiple: false,
     init: function(){
         if(document.querySelector('[name = "imagen"]').value.trim()){

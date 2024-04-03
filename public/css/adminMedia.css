@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+    main{
+        width: 100% !important;
+    }
+    .dvs1,.dvs2,.dvs3,.dvs4{
+        width: 32%;
+        height: 10vh;
+        font-weight: 800;
+        color: white;
+        font-size:15px;
+        cursor: pointer;
+    }
+    .products-div .card{
+        width: 49% !important;
+    }
+
+    .products-div .card img{
+        height:30vh !important;
+    }
+    .card-add {
+        width: 95% !important;
+    }
+    .card-add  form{
+        width: 100% !important;
+    }
+    .pedidos-card .card{
+        width: 48% !important;
+    }
+    .carddd .card{
+        width: 48% !important;
+    }
+    .carddd .card .card-body img{
+        height: 35vh !important;
+    }
+    .carddd .card .card-body .card-if{
+        width: 100% !important;
+    }
+}

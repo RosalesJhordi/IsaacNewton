@@ -5,13 +5,16 @@
 @endsection
 
 @section('contenido')
-    <h1 class="px-2 py-3 fs-3 fw-bold">Productos mas vendidos:</h1>
-    <div class="w-100 d-flex flex-column">
-        <div class="w-100 d-flex px-2 flex-wrap gap-2">
+    <div class="w-100 position-relative px-2 px-md-4 d-flex justify-content-between align-items-center ">
+        <h1 class="px-2 py-3 fs-3 fw-bold">Productos:</h1>
+        @livewire('buscador')
+    </div>
+    <div class="w-100 px-2 px-md-4 d-flex flex-column">
+        <div class="w-100 d-flex px-2 flex-wrap gap-2 products-div">
             @foreach ($datos as $data)
                 <div class="card position-relative card-uniforme" style="width: 24%;">
                     <img src="{{ asset('ServidorImagenes') . '/' . $data->imagen }}"alt="Imagen Producto {{ $data->talla }}"
-                        class="w-full" style=" height:40vh;" />
+                        class="w-full" style=" height:40vh; object-fit: cover; " />
                     <div class="w-100 px-2 py-2 d-flex justify-content-between align-items-center">
                         <h3 class="fs-4">{{ $data->nombre }}</h3>
                         <h3 class="fs-4">{{ $data->tipo }}</h3>
@@ -41,8 +44,11 @@
                     <div class="px-2">
                         <h4 class="fs-6">Tallas disponibles: {{ $data->tallas }}</h4>
                     </div>
-                    <div class="px-2 w-100 py-2">
-                        <button class="btn px-2 w-100 bg-warning text-white">Editar producto</button>
+                    <div class="px-2 w-100 py-2 d-flex justify-content-between gap-2">
+                        <a href="{{ route('Edit',$data->id) }}" class="btn px-2 w-50 text-white" style="background: rgb(26, 212, 20);">Editar</a>
+                        <a href="{{ route('delete',$data->id) }}" class="btn text-white w-50" style="background: rgb(250, 16, 16);">
+                            Eliminar
+                        </a>
                     </div>
                 </div>
             @endforeach

@@ -1,0 +1,63 @@
+@media (max-width: 768px) {
+    .div-container {
+        width: 95% !important;
+    }
+    .div-envio,.div-horas{
+        height: 10vh !important;
+    }
+    .div-btn-cate{
+        width: 100% !important;
+    }
+    .div-btn-cate a{
+        font-size: 15px !important;
+    }
+    .div-btn-cate .enlase2,.enlase1, .enlase3{
+        height: 4vh !important;
+    }
+    .filtrot{
+        margin-top: 10px    !important;
+        width: 60% !important;
+        padding: 10px !important;
+        text-align: center;
+    }
+    .showw .card{
+        width: 90% !important;
+        height: 70vh !important;
+    }
+    .showw .card img{
+        height: 50vh !important;
+    }
+    .showw .card .info-showw{
+        width: 100% !important;
+    }
+    .car-info h1{
+        width: 95% !important;
+    }
+    .car-info form{
+        width: 95% !important;
+        height: auto !important;
+    }
+    .car-info form .flex-wrap{
+        width: 100% !important;
+    }
+    .car-info form .flex-wrap .card{
+        width: 100% !important;
+    }
+    .car-info form .flex-wrap .card img{
+        width: 80% !important;
+    }
+    .btn-conf{
+        width: 95% !important;
+    }
+    .sin-producto img{
+        width: 50% !important;
+    }
+    .sin-producto h1{
+        font-size: 20px !important;
+        text-align: center;
+    }
+    .sin-producto a{
+        width: 90% !important;
+        margin-top: 10px !important;
+    }
+}

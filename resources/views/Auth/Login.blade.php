@@ -12,17 +12,23 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
-    @vite('resources/css/Login.css')
+    <link rel="stylesheet" href="{{ asset('css/Login.css') }}">
+    <style>
+        body {
+            background-image: url('{{ asset('img/lake-192979_1280.jpg') }}');
+        }
+    </style>
 </head>
 
 <body class="d-flex">
     <main class="d-flex w-100 justify-content-center  align-items-center">
         <form action="{{ route('Login.store') }}" method="POST" novalidate
-            class="card d-flex flex-column gap-3 justify-content-center align-items-center py-5 shadow needs-validation">
+            class="card d-flex flex-column gap-3 justify-content-center align-items-center py-5 shadow needs-validation" style="background-color: rgba(255, 255, 255, 0.877);">
             @csrf
             <h1 class="py-5 text-uppercase">Bienvenido</h1>
             @if (session('mensaje'))
-                <p class="col-md-10 p-1 rounded-1 text-white fw-bold text-center" style="background: red;">{{ session('mensaje') }}</p>
+                <p class="col-md-10 p-1 rounded-1 text-white fw-bold text-center" style="background: red;">
+                    {{ session('mensaje') }}</p>
             @endif
             <div
                 class="col-md-10 d-flex border-1  rounded-1 bg-primary justify-content-between align-items-center border text-white">
@@ -50,8 +56,7 @@
             <button class="btn bg-primary text-white px-5 mt-5 ">
                 Iniciar sesion
             </button>
-
-            <a href="{{ route('Registro') }}">Crear cuenta</a>
+            <p class="d-flex fw-semibold gap-2">No tienes una cuenta? <a class="nav-link text-primary" href="{{ route('Registro') }}"> Crea una</a></p>
         </form>
     </main>
 
