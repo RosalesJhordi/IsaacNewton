@@ -10,7 +10,8 @@ class Carrito extends Component
     public $car;
 
     public function update(){
-        $pedidos = Pedidos::where('id_cliente', auth()->user()->id)
+        if(auth()->user()){
+            $pedidos = Pedidos::where('id_cliente', auth()->user()->id)
                   ->where(function ($query) {
                       $query->whereNull('confirmado')
                             ->orWhere('confirmado', "False");
@@ -19,6 +20,8 @@ class Carrito extends Component
         if($pedidos != null){
            $this->car = $pedidos->count(); 
         }
+        };
+        
     }
     public function render()
     {
