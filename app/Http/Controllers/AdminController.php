@@ -14,10 +14,14 @@ class AdminController extends Controller
         $user = User::find(1);
         $pedidos = $user->unreadNotifications;
         $datos = Uniformes::all();
-        return view('Admin.Inicio', compact('datos','pedidos'));
+        return view('Admin.Inicio', compact('datos', 'pedidos'));
     }
     public function datos(Request $request)
     {
+
+        ini_set('upload_max_filesize', '20M');
+        ini_set('post_max_size', '20M');
+        
         $image              = $request->file('imagen');
         $imageName          = Str::uuid() . '.' . $image->getClientOriginalExtension();
         $destinationPath    = public_path('ServidorImagenes');
