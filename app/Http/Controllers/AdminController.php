@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Uniformes;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -19,14 +18,10 @@ class AdminController extends Controller
     }
     public function datos(Request $request)
     {
-
-        $imagen = $request->file('imagen');
-
-        $nomImage = Str::uuid() . "." . $imagen->extension();
-        $imgServe = Image::make($imagen);
-
-        $imgPath = public_path('ServidorImagenes') . '/' . $nomImage;
-        $imgServe->save($imgPath);
+        $image              = $request->file('imagen');
+        $imageName          = Str::uuid() . '.' . $image->getClientOriginalExtension();
+        $destinationPath    = public_path('ServidorImagenes');
+        $image->move($destinationPath, $imageName);
 
         $nombre = $request->nombre;
         $talla = implode(',', $request->tallas);
@@ -39,7 +34,7 @@ class AdminController extends Controller
                 'precio' => $request->precio,
                 'descuento' => $request->descuento,
                 'tipo' => "Formal",
-                'imagen' => $nomImage,
+                'imagen' => $imageName,
             ]);
         } else {
             Uniformes::create([
@@ -49,7 +44,7 @@ class AdminController extends Controller
                 'precio' => $request->precio,
                 'descuento' => $request->descuento,
                 'tipo' => "Deportivo",
-                'imagen' => $nomImage,
+                'imagen' => $imageName,
             ]);
         }
 
